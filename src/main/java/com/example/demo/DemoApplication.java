@@ -1,14 +1,19 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
-		System.out.println("hello world");
+		ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
+		Alien a = context.getBean(Alien.class);
+		System.out.println(a);
+		a.show();
 	}
 
 }
